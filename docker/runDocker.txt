@@ -1,0 +1,38 @@
+构建Docker镜像：
+  cd docker/
+  docker compose build
+
+终端1 - 运行SLAM：
+  cd docker/
+  ./run_docker.sh
+
+  # 容器内运行（通过 sequence_name 指定输出文件名）
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=mh01 & rosbag play /datasets/euroc_mav/MH_01_easy.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=mh02 & rosbag play /datasets/euroc_mav/MH_02_easy.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=mh03 & rosbag play /datasets/euroc_mav/MH_03_medium.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=mh04 & rosbag play /datasets/euroc_mav/MH_04_difficult.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=mh05 & rosbag play /datasets/euroc_mav/MH_05_difficult.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=v101 & rosbag play /datasets/euroc_mav/V1_01_easy.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=v102 & rosbag play /datasets/euroc_mav/V1_02_medium.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=v103 & rosbag play /datasets/euroc_mav/V1_03_difficult.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=v201 & rosbag play /datasets/euroc_mav/V2_01_easy.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=v202 & rosbag play /datasets/euroc_mav/V2_02_medium.bag
+  roslaunch plvins_estimator plvins_no_rviz.launch sequence_name:=v203 & rosbag play /datasets/euroc_mav/V2_03_difficult.bag
+
+终端2 - 运行RViz（宿主机）：
+  cd docker/
+  ./host_rviz.sh
+
+结果输出在 /home/lee/Results/line/PLVINS/euroc/ 下，例如：
+  euroc/mh01_tum_noloop.txt       (无回环轨迹，TUM格式)
+  euroc/mh01_evo_noloop.txt       (无回环轨迹，EVO格式)
+  euroc/mh01_tum_loop.txt         (回环优化轨迹，TUM格式)
+  euroc/mh01_evo_loop.txt         (回环优化轨迹，EVO格式)
+  euroc/mh01_tum_globalloop.txt   (全局回环优化轨迹，TUM格式)
+  euroc/mh01_evo_globalloop.txt   (全局回环优化轨迹，EVO格式)
+
+注意事项：
+  1. 数据集目录默认挂载到容器内 /datasets，请确保 /home/lee/Documents/Datasets_VSLAM 下有 EuRoC 数据集
+  2. 如需修改数据集或结果路径，编辑 docker-compose.yml 中的 volumes
+  3. host_rviz.sh 需要宿主机已安装 nvidia-docker（--gpus all）并允许 X11 转发
+  4. 每次运行新序列前无需手动清空结果文件，程序启动时会自动清空对应序列的输出文件

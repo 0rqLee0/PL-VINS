@@ -1,0 +1,17 @@
+services:
+  pl-vins:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: pl-vins:melodic
+    container_name: pl-vins
+    network_mode: host
+    ipc: host
+    volumes:
+      # 挂载数据集目录
+      - /home/lee/Documents/Datasets_VSLAM:/datasets:ro
+      # 挂载输出目录
+      - /home/lee/Results/line/PLVINS:/results
+    stdin_open: true
+    tty: true
+    command: /bin/bash

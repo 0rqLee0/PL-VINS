@@ -19,6 +19,7 @@ int NUM_ITERATIONS;
 int ESTIMATE_EXTRINSIC;
 std::string EX_CALIB_RESULT_PATH;
 std::string VINS_RESULT_PATH;
+std::string SEQUENCE_NAME;
 int LOOP_CLOSURE = 0;
 int MIN_LOOP_NUM;
 std::string CAM_NAMES;
@@ -70,9 +71,18 @@ void readParameters(ros::NodeHandle &n)
 
     fsSettings["output_path"] >> VINS_RESULT_PATH;
     VINS_RESULT_PATH = VINS_FOLDER_PATH + VINS_RESULT_PATH;
-    std::ofstream foutC("/home/healer/EuRoC/PL-VINS/outout/tum_plvins.txt", std::ios::out);
-    foutC.close();
-    std::ofstream foutC1("/home/healer/EuRoC/PL-VINS/outout/evo_plvins.txt", std::ios::out);
+
+    n.param<std::string>("sequence_name", SEQUENCE_NAME, "sequence");
+
+    // 创建输出目录 /results/euroc/
+    std::string result_dir = "/results/euroc/";
+    std::string mkdir_cmd = "mkdir -p " + result_dir;
+    system(mkdir_cmd.c_str());
+
+    // 清空 noloop 输出文件
+    // std::ofstream foutC(result_dir + SEQUENCE_NAME + "_tum_noloop.txt", std::ios::out);
+    // foutC.close();
+    std::ofstream foutC1(result_dir + SEQUENCE_NAME + "_evo_noloop.txt", std::ios::out);
     foutC1.close();
 
     ACC_N = fsSettings["acc_n"];

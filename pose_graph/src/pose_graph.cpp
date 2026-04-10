@@ -164,36 +164,36 @@ void PoseGraph::addKeyFrame(KeyFrame* cur_kf, bool flag_detect_loop)
         //       << Q.z() << ","
         //       << endl;
         // loop_path_file.close();
-        ofstream foutC("/home/healer/catkin_PLVINS/src/PL-VINS/Trajactory/tum_fast_plvins_loop.txt", ios::app);
-        foutC.setf(ios::fixed, ios::floatfield);
-        foutC.precision(0);
-        foutC << cur_kf->time_stamp * 1e9<< " ";
-        foutC.precision(5);
-        foutC << P.x() << " "
-              << P.y() << " "
-              << P.z() << " "
-              << Q.w() << " "
-              << Q.x() << " "
-              << Q.y() << " "
-              << Q.z() << " "
-              << endl;
-        foutC.close();
+        // ofstream foutC("/results/euroc/" + SEQUENCE_NAME + "_tum_loop.txt", ios::app);
+        // foutC.setf(ios::fixed, ios::floatfield);
+        // foutC.precision(0);
+        // foutC << cur_kf->time_stamp * 1e9<< " ";
+        // foutC.precision(5);
+        // foutC << P.x() << " "
+        //       << P.y() << " "
+        //       << P.z() << " "
+        //       << Q.w() << " "
+        //       << Q.x() << " "
+        //       << Q.y() << " "
+        //       << Q.z() << " "
+        //       << endl;
+        // foutC.close();
 
-        ofstream foutC1("/home/healer/catkin_PLVINS/src/PL-VINS/Trajactory/evo_fast_plvins_loop.txt", ios::app);
-        foutC1.setf(ios::fixed, ios::floatfield);
-        foutC1.precision(9);
-        foutC1 << cur_kf->time_stamp << " ";
-        foutC1.precision(5);
-        foutC1 << P.x() << " "
-              << P.y() << " "
-              << P.z() << " "
-              << Q.x() << " "
-              << Q.y() << " "
-              << Q.z() << " "
-              << Q.w() << " "
-              << endl;
+        // ofstream foutC1("/results/euroc/" + SEQUENCE_NAME + "_evo_loop.txt", ios::app);
+        // foutC1.setf(ios::fixed, ios::floatfield);
+        // foutC1.precision(9);
+        // foutC1 << cur_kf->time_stamp << " ";
+        // foutC1.precision(5);
+        // foutC1 << P.x() << " "
+        //       << P.y() << " "
+        //       << P.z() << " "
+        //       << Q.x() << " "
+        //       << Q.y() << " "
+        //       << Q.z() << " "
+        //       << Q.w() << " "
+        //       << endl;
 
-        foutC1.close();
+        // foutC1.close();
     }
     //draw local connection
     if (SHOW_S_EDGE)
@@ -671,36 +671,36 @@ void PoseGraph::updatePath()
             //       << Q.z() << ","
             //       << endl;
             // loop_path_file.close();
-        ofstream foutC("/home/dragon/Desktop/result/newdata/tum_fast_plvio_loop.txt", ios::app);
-        foutC.setf(ios::fixed, ios::floatfield);
-        foutC.precision(0);
-        foutC << (*it)->time_stamp * 1e9<< " ";
-        foutC.precision(5);
-        foutC << P.x() << " "
-              << P.y() << " "
-              << P.z() << " "
-              << Q.w() << " "
-              << Q.x() << " "
-              << Q.y() << " "
-              << Q.z() << " "
-              << endl;
-        foutC.close();
+        // ofstream foutC("/results/euroc/" + SEQUENCE_NAME + "_tum_globalloop.txt", ios::app);
+        // foutC.setf(ios::fixed, ios::floatfield);
+        // foutC.precision(0);
+        // foutC << (*it)->time_stamp * 1e9<< " ";
+        // foutC.precision(5);
+        // foutC << P.x() << " "
+        //       << P.y() << " "
+        //       << P.z() << " "
+        //       << Q.w() << " "
+        //       << Q.x() << " "
+        //       << Q.y() << " "
+        //       << Q.z() << " "
+        //       << endl;
+        // foutC.close();
 
-        ofstream foutC1("/home/dragon/Desktop/result/newdata/evo_fast_plvio_loop.txt", ios::app);
-        foutC1.setf(ios::fixed, ios::floatfield);
-        foutC1.precision(9);
-        foutC1 << (*it)->time_stamp << " ";
-        foutC1.precision(5);
-        foutC1 << P.x() << " "
-              << P.y() << " "
-              << P.z() << " "
-              << Q.x() << " "
-              << Q.y() << " "
-              << Q.z() << " "
-              << Q.w() << " "
-              << endl;
+        // ofstream foutC1("/results/euroc/" + SEQUENCE_NAME + "_evo_globalloop.txt", ios::app);
+        // foutC1.setf(ios::fixed, ios::floatfield);
+        // foutC1.precision(9);
+        // foutC1 << (*it)->time_stamp << " ";
+        // foutC1.precision(5);
+        // foutC1 << P.x() << " "
+        //       << P.y() << " "
+        //       << P.z() << " "
+        //       << Q.x() << " "
+        //       << Q.y() << " "
+        //       << Q.z() << " "
+        //       << Q.w() << " "
+        //       << endl;
 
-        foutC1.close();
+        // foutC1.close();
         }
         //draw local connection
         if (SHOW_S_EDGE)
