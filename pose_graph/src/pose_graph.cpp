@@ -164,7 +164,7 @@ void PoseGraph::addKeyFrame(KeyFrame* cur_kf, bool flag_detect_loop)
         //       << Q.z() << ","
         //       << endl;
         // loop_path_file.close();
-        // ofstream foutC("/results/euroc/" + SEQUENCE_NAME + "_tum_loop.txt", ios::app);
+        // ofstream foutC(RESULT_DIR + SEQUENCE_NAME + "_tum_loop.txt", ios::app);
         // foutC.setf(ios::fixed, ios::floatfield);
         // foutC.precision(0);
         // foutC << cur_kf->time_stamp * 1e9<< " ";
@@ -179,7 +179,7 @@ void PoseGraph::addKeyFrame(KeyFrame* cur_kf, bool flag_detect_loop)
         //       << endl;
         // foutC.close();
 
-        // ofstream foutC1("/results/euroc/" + SEQUENCE_NAME + "_evo_loop.txt", ios::app);
+        // ofstream foutC1(RESULT_DIR + SEQUENCE_NAME + "_evo_loop.txt", ios::app);
         // foutC1.setf(ios::fixed, ios::floatfield);
         // foutC1.precision(9);
         // foutC1 << cur_kf->time_stamp << " ";
@@ -671,7 +671,7 @@ void PoseGraph::updatePath()
             //       << Q.z() << ","
             //       << endl;
             // loop_path_file.close();
-        // ofstream foutC("/results/euroc/" + SEQUENCE_NAME + "_tum_globalloop.txt", ios::app);
+        // ofstream foutC(RESULT_DIR + SEQUENCE_NAME + "_tum_globalloop.txt", ios::app);
         // foutC.setf(ios::fixed, ios::floatfield);
         // foutC.precision(0);
         // foutC << (*it)->time_stamp * 1e9<< " ";
@@ -686,7 +686,7 @@ void PoseGraph::updatePath()
         //       << endl;
         // foutC.close();
 
-        // ofstream foutC1("/results/euroc/" + SEQUENCE_NAME + "_evo_globalloop.txt", ios::app);
+        // ofstream foutC1(RESULT_DIR + SEQUENCE_NAME + "_evo_globalloop.txt", ios::app);
         // foutC1.setf(ios::fixed, ios::floatfield);
         // foutC1.precision(9);
         // foutC1 << (*it)->time_stamp << " ";

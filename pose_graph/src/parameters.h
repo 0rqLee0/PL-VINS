@@ -23,6 +23,7 @@ extern int ROW;
 extern int COL;
 extern std::string VINS_RESULT_PATH;
 extern std::string SEQUENCE_NAME;
+extern std::string RESULT_DIR;
 extern int DEBUG_IMAGE;
 extern int FAST_RELOCALIZATION;
 

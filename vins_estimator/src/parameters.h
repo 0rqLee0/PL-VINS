@@ -39,6 +39,7 @@ extern std::string EX_CALIB_RESULT_PATH;
 extern std::string VINS_RESULT_PATH;
 extern std::string VINS_FOLDER_PATH;
 extern std::string SEQUENCE_NAME;
+extern std::string RESULT_DIR;
 
 extern int LOOP_CLOSURE;
 extern int MIN_LOOP_NUM;

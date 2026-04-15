@@ -63,6 +63,7 @@ std::string BRIEF_PATTERN_FILE;
 std::string POSE_GRAPH_SAVE_PATH;
 std::string VINS_RESULT_PATH;
 std::string SEQUENCE_NAME;
+std::string RESULT_DIR;
 CameraPoseVisualization cameraposevisual(1, 0, 0, 1);
 Eigen::Vector3d last_t(-100, -100, -100);
 double last_image_time = -1;
@@ -514,15 +515,15 @@ int main(int argc, char **argv)
         if (sequence_name.empty()) sequence_name = "sequence";
         SEQUENCE_NAME = sequence_name;
 
-        // 创建输出目录
-        std::string result_dir = "/results/euroc/";
-        std::string mkdir_cmd = "mkdir -p " + result_dir;
+        // 从config中读取输出目录
+        fsSettings["output_path"] >> RESULT_DIR;
+        std::string mkdir_cmd = "mkdir -p " + RESULT_DIR;
         system(mkdir_cmd.c_str());
 
         // // 清空 loop 输出文件（暂时注释）
-        // std::ofstream foutC(result_dir + SEQUENCE_NAME + "_tum_loop.txt", std::ios::out);
+        // std::ofstream foutC(RESULT_DIR + SEQUENCE_NAME + "_tum_loop.txt", std::ios::out);
         // foutC.close();
-        // std::ofstream foutC1(result_dir + SEQUENCE_NAME + "_evo_loop.txt", std::ios::out);
+        // std::ofstream foutC1(RESULT_DIR + SEQUENCE_NAME + "_evo_loop.txt", std::ios::out);
         // foutC1.close();     
        
 

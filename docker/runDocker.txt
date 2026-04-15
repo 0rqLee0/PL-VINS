@@ -31,8 +31,28 @@
   euroc/mh01_tum_globalloop.txt   (全局回环优化轨迹，TUM格式)
   euroc/mh01_evo_globalloop.txt   (全局回环优化轨迹，EVO格式)
 
+===== TUM-VI 数据集 =====
+
+终端1 - 运行SLAM：
+  cd docker/
+  ./run_docker.sh
+
+  # 容器内运行（通过 sequence_name 指定输出文件名）
+  roslaunch plvins_estimator tumvi_no_rviz.launch sequence_name:=room1 & rosbag play /datasets/TUM/room1.bag
+  roslaunch plvins_estimator tumvi_no_rviz.launch sequence_name:=room2 & rosbag play /datasets/TUM/room2.bag
+  roslaunch plvins_estimator tumvi_no_rviz.launch sequence_name:=room3 & rosbag play /datasets/TUM/room3.bag
+  roslaunch plvins_estimator tumvi_no_rviz.launch sequence_name:=room4 & rosbag play /datasets/TUM/room4.bag
+  roslaunch plvins_estimator tumvi_no_rviz.launch sequence_name:=room5 & rosbag play /datasets/TUM/room5.bag
+  roslaunch plvins_estimator tumvi_no_rviz.launch sequence_name:=room6 & rosbag play /datasets/TUM/room6.bag
+
+终端2 - 运行RViz（宿主机）：
+  cd docker/
+  ./host_rviz.sh
+
+结果输出在 /home/lee/Results/line/PLVINS/tumvi/ 下
+
 注意事项：
-  1. 数据集目录默认挂载到容器内 /datasets，请确保 /home/lee/Documents/Datasets_VSLAM 下有 EuRoC 数据集
+  1. 数据集目录默认挂载到容器内 /datasets，请确保 /home/lee/Documents/Datasets_VSLAM 下有对应数据集
   2. 如需修改数据集或结果路径，编辑 docker-compose.yml 中的 volumes
   3. host_rviz.sh 需要宿主机已安装 nvidia-docker（--gpus all）并允许 X11 转发
   4. 每次运行新序列前无需手动清空结果文件，程序启动时会自动清空对应序列的输出文件

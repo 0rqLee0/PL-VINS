@@ -160,7 +160,7 @@ void pubOdometry(const Estimator &estimator, const std_msgs::Header &header, Eig
         relo_path.poses.push_back(pose_stamped);
         pub_relo_path.publish(relo_path);
 
-        // ofstream foutC("/results/euroc/" + SEQUENCE_NAME + "_tum_noloop.txt", ios::app);
+        // ofstream foutC(RESULT_DIR + SEQUENCE_NAME + "_tum_noloop.txt", ios::app);
         // foutC.setf(ios::fixed, ios::floatfield);
         // foutC.precision(0);
         // foutC << header.stamp.toSec() * 1e9<< " ";
@@ -174,7 +174,7 @@ void pubOdometry(const Estimator &estimator, const std_msgs::Header &header, Eig
         //       << correct_q.z() <<endl;
         // foutC.close();
 
-        ofstream foutC1("/results/euroc/" + SEQUENCE_NAME + "_evo_noloop.txt", ios::app);
+        ofstream foutC1(RESULT_DIR + SEQUENCE_NAME + "_evo_noloop.txt", ios::app);
         foutC1.setf(ios::fixed, ios::floatfield);
         foutC1.precision(9);
         foutC1 << header.stamp.toSec() << " ";
